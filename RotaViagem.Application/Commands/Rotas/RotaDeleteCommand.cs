@@ -4,13 +4,13 @@ namespace RotaViagem.Application.Commands.Rotas;
 
 public class RotaDeleteCommand: Notificavel, ICommands
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     public void Validar()
     {
-        if (Id <= 0)
+        if (Id == Guid.Empty)
         {
-            AddErro("O Código da rota é obrigatória!");
+            AddErro("O Código da rota é obrigatório!");
         }
     }
 }

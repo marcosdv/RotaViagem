@@ -2,7 +2,7 @@
 
 public class Rota
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     public string Origem { get; set; } = string.Empty;
     public string Destino { get; set; } = string.Empty;
     public double Preco { get; set; }
@@ -10,9 +10,9 @@ public class Rota
     // Construtor privado para EF Core
     private Rota() { }
 
-    public Rota(int id, string origem, string destino, double preco)
+    public Rota(Guid id, string origem, string destino, double preco)
     {
-        if (id <= 0)
+        if (id == Guid.Empty)
         {
             throw new ArgumentException("Campo Id deve ser maior que zero.");
         }
