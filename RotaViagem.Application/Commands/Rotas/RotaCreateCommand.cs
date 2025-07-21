@@ -10,11 +10,11 @@ namespace RotaViagem.Application.Commands.Rotas
 
         public void Validar()
         {
-            if (string.IsNullOrEmpty(Origem))
+            if (string.IsNullOrWhiteSpace(Origem))
             {
                 AddErro("A Origem da rota é obrigatória!");
             }
-            if (string.IsNullOrEmpty(Destino))
+            if (string.IsNullOrWhiteSpace(Destino))
             {
                 AddErro("O Destino da rota é obrigatório!");
             }

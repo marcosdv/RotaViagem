@@ -15,11 +15,11 @@ public class RotaUpdateCommand: Notificavel, ICommands
         {
             AddErro("O Código da rota é obrigatória!");
         }
-        if (string.IsNullOrEmpty(Origem))
+        if (string.IsNullOrWhiteSpace(Origem))
         {
             AddErro("A Origem da rota é obrigatória!");
         }
-        if (string.IsNullOrEmpty(Destino))
+        if (string.IsNullOrWhiteSpace(Destino))
         {
             AddErro("O Destino da rota é obrigatório!");
         }
