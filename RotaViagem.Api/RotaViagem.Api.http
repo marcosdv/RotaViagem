@@ -1,0 +1,6 @@
+@RotaViagem.Api_HostAddress = http://localhost:5171
+
+GET {{RotaViagem.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
