@@ -4,7 +4,7 @@ namespace RotaViagem.Domain.Repositories;
 
 public interface IRotaRepository
 {
-    Task<Rota> GetByIdAsync(Guid id);
+    Task<Rota> GetByIdAsync(int id);
     Task<IEnumerable<Rota>> GetAllAsync();
 
     Task AddAsync(Rota route);
