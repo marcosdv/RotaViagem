@@ -16,7 +16,7 @@ public class Rota
         {
             throw new ArgumentException("Campo Id deve ser maior que zero.");
         }
-        ValidarObrigatorios();
+        ValidarObrigatorios(origem, destino, preco);
 
         Id = id;
         Origem = origem;
@@ -26,24 +26,24 @@ public class Rota
 
     public void Update(string origem, string destino, double preco)
     {
-        ValidarObrigatorios();
+        ValidarObrigatorios(origem, destino, preco);
 
         Origem = origem;
         Destino = destino;
         Preco = preco;
     }
 
-    private void ValidarObrigatorios()
+    private void ValidarObrigatorios(string origem, string destino, double preco)
     {
-        if (string.IsNullOrWhiteSpace(Origem))
+        if (string.IsNullOrWhiteSpace(origem))
         {
             throw new ArgumentException("Campo Origem é obrigatório.");
         }
-        if (string.IsNullOrWhiteSpace(Destino))
+        if (string.IsNullOrWhiteSpace(destino))
         {
             throw new ArgumentException("Campo Destino é obrigatório.");
         }
-        if (Preco <= 0)
+        if (preco <= 0)
         {
             throw new ArgumentException("Campo Preço deve ser maior que zero.");
         }
