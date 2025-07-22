@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using RotaViagem.Application.Handlers.Rotas;
 using RotaViagem.Domain.Repositories;
@@ -21,6 +20,7 @@ builder.Services.AddScoped<IRotaRepository, RotaRepository>();
 builder.Services.AddScoped<RotaCreateHandler, RotaCreateHandler>();
 builder.Services.AddScoped<RotaUpdateHandler, RotaUpdateHandler>();
 builder.Services.AddScoped<RotaDeleteHandler, RotaDeleteHandler>();
+builder.Services.AddScoped<RotaGetAllHandler, RotaGetAllHandler>();
 //DI - Injecao de Dependencias
 
 builder.Services.AddEndpointsApiExplorer();
