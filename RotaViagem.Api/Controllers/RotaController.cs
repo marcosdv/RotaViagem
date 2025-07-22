@@ -2,6 +2,7 @@
 using RotaViagem.Application.Commands;
 using RotaViagem.Application.Commands.Rotas;
 using RotaViagem.Application.Handlers.Rotas;
+using RotaViagem.Application.Queries.Rotas;
 
 namespace RotaViagem.Api.Controllers;
 
@@ -12,12 +13,21 @@ public class RotaController : ControllerBase
     private readonly RotaCreateHandler _rotaCreateHandler;
     private readonly RotaUpdateHandler _rotaUpdateHandler;
     private readonly RotaDeleteHandler _rotaDeleteHandler;
+    private readonly RotaGetAllHandler _rotaGetAllHandler;
 
-    public RotaController(RotaCreateHandler rotaCreateHandler, RotaUpdateHandler rotaUpdateHandler, RotaDeleteHandler rotaDeleteHandler)
+    public RotaController(RotaCreateHandler rotaCreateHandler, RotaUpdateHandler rotaUpdateHandler, RotaDeleteHandler rotaDeleteHandler, RotaGetAllHandler rotaGetAllHandler)
     {
         _rotaCreateHandler = rotaCreateHandler;
         _rotaUpdateHandler = rotaUpdateHandler;
         _rotaDeleteHandler = rotaDeleteHandler;
+        _rotaGetAllHandler = rotaGetAllHandler;
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAllAsync()
+    {
+        var result = await _rotaGetAllHandler.Execute(new RotaGetAllQuery());
+        return CreateResult(result);
     }
 
     [HttpPost]
@@ -28,14 +38,14 @@ public class RotaController : ControllerBase
     }
 
     [HttpPut]
-    public async Task<IActionResult> Alterar(RotaUpdateCommand command)
+    public async Task<IActionResult> UpdateAsync(RotaUpdateCommand command)
     {
         var result = await _rotaUpdateHandler.Execute(command);
         return CreateResult(result);
     }
 
     [HttpDelete]
-    public async Task<IActionResult> Excluir(RotaDeleteCommand command)
+    public async Task<IActionResult> DeleteAsync(RotaDeleteCommand command)
     {
         var result = await _rotaDeleteHandler.Execute(command);
         return CreateResult(result);
