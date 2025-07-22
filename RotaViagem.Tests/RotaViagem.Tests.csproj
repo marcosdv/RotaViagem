@@ -18,10 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Api\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\RotaViagem.Api\RotaViagem.Api.csproj" />
     <ProjectReference Include="..\RotaViagem.Application\RotaViagem.Application.csproj" />
   </ItemGroup>
 
