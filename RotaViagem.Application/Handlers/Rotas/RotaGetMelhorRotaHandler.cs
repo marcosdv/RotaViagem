@@ -102,7 +102,7 @@ public class RotaGetMelhorRotaHandler : IQueryHandler<RotaGetMelhorRotaQuery>
             }
         }
 
-        if (dist[destino] == double.MaxValue)
+        if ((!dist.ContainsKey(destino)) || dist[destino] == double.MaxValue)
         {
             return new MelhorRotaResponse
             {
