@@ -30,9 +30,18 @@ public class MockRotaRepository : IRotaRepository
         return Task.FromResult<IEnumerable<Rota>>(_rotas);
     }
 
-    public async Task AddAsync(Rota rota) { }
+    public Task AddAsync(Rota rota)
+    {
+        return Task.CompletedTask;
+    }
 
-    public async Task UpdateAsync(Rota rota) { }
+    public Task UpdateAsync(Rota rota)
+    {
+        return Task.CompletedTask;
+    }
 
-    public async Task DeleteAsync(Rota rota) { }
+    public Task DeleteAsync(Rota rota) 
+    {
+        return Task.CompletedTask;
+    }
 }
