@@ -1,69 +1,67 @@
-﻿using Moq;
-using RotaViagem.Application.Commands.Rotas;
+﻿using RotaViagem.Application.Commands.Rotas;
 
-namespace RotaViagem.Tests.Application.Commands.Rotas
+namespace RotaViagem.Tests.Application.Commands.Rotas;
+
+[TestClass]
+public class RotaCreateCommandTests
 {
-    [TestClass]
-    public class RotaCreateCommandTests
+    [TestMethod]
+    public void DadoUmComandoValidoDeveRetornarSemErro()
     {
-        [TestMethod]
-        public void DadoUmComandoValidoDeveRetornarSemErro()
+        var command = new RotaCreateCommand
         {
-            var command = new RotaCreateCommand
-            {
-                Origem = "Origem",
-                Destino = "Destino",
-                Preco = 10
-            };
+            Origem = "Origem",
+            Destino = "Destino",
+            Preco = 10
+        };
 
-            command.Validar();
+        command.Validar();
 
-            Assert.IsTrue(command.SemErro);
-        }
+        Assert.IsTrue(command.SemErro);
+    }
 
-        [TestMethod]
-        public void DadoUmComandoSemOrigemDeveRetornarExisteErro()
+    [TestMethod]
+    public void DadoUmComandoSemOrigemDeveRetornarExisteErro()
+    {
+        var command = new RotaCreateCommand
         {
-            var command = new RotaCreateCommand
-            {
-                Destino = "Destino",
-                Preco = 10
-            };
+            Destino = "Destino",
+            Preco = 10
+        };
 
-            command.Validar();
+        command.Validar();
 
-            Assert.IsTrue(command.ExisteErro);
-            Assert.IsTrue(command.Erros.Any());
-        }
+        Assert.IsTrue(command.ExisteErro);
+        Assert.IsTrue(command.Erros.Any());
+    }
 
-        [TestMethod]
-        public void DadoUmComandoSemDestinoDeveRetornarExisteErro()
+    [TestMethod]
+    public void DadoUmComandoSemDestinoDeveRetornarExisteErro()
+    {
+        var command = new RotaCreateCommand
         {
-            var command = new RotaCreateCommand
-            {
-                Origem = "Origem",
-                Preco = 10
-            };
+            Origem = "Origem",
+            Preco = 10
+        };
 
-            command.Validar();
+        command.Validar();
 
-            Assert.IsTrue(command.ExisteErro);
-            Assert.IsTrue(command.Erros.Any());
-        }
+        Assert.IsTrue(command.ExisteErro);
+        Assert.IsTrue(command.Erros.Any());
+    }
 
-        [TestMethod]
-        public void DadoUmComandoSemPrecoDeveRetornarExisteErro()
+    [TestMethod]
+    public void DadoUmComandoSemPrecoDeveRetornarExisteErro()
+    {
+        var command = new RotaCreateCommand
         {
-            var command = new RotaCreateCommand
-            {
-                Origem = "Origem",
-                Destino = "Destino"
-            };
+            Origem = "Origem",
+            Destino = "Destino"
+        };
 
-            command.Validar();
+        command.Validar();
 
-            Assert.IsTrue(command.ExisteErro);
-            Assert.IsTrue(command.Erros.Any());
-        }
+        Assert.IsTrue(command.ExisteErro);
+        Assert.IsTrue(command.Erros.Any());
     }
 }
