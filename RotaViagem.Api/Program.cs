@@ -21,6 +21,7 @@ builder.Services.AddScoped<RotaCreateHandler, RotaCreateHandler>();
 builder.Services.AddScoped<RotaUpdateHandler, RotaUpdateHandler>();
 builder.Services.AddScoped<RotaDeleteHandler, RotaDeleteHandler>();
 builder.Services.AddScoped<RotaGetAllHandler, RotaGetAllHandler>();
+builder.Services.AddScoped<RotaGetByIdHandler, RotaGetByIdHandler>();
 //DI - Injecao de Dependencias
 
 builder.Services.AddEndpointsApiExplorer();
