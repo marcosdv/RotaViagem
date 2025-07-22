@@ -1,5 +1,5 @@
 ﻿using RotaViagem.Application.Commands;
-using RotaViagem.Application.Commands.Results;
+using RotaViagem.Application.Queries.Results;
 using RotaViagem.Application.Queries.Rotas;
 using RotaViagem.Domain.Repositories;
 
@@ -17,6 +17,6 @@ public class RotaGetAllHandler : IQueryHandler<RotaGetAllQuery>
     public async Task<ICommandResult> Execute(RotaGetAllQuery command)
     {
         var rotas = await _rotaRepository.GetAllAsync();
-        return new CommandResult(true, "Rotas obtidas com sucesso", rotas);
+        return new QueriesResult(true, rotas);
     }
 }
