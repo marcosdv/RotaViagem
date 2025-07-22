@@ -16,6 +16,11 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<DataContext>(x => 
     x.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
+
+builder.Services.AddScoped<IRotaRepository, RotaRepository>();
+builder.Services.AddScoped<RotaCreateHandler, RotaCreateHandler>();
+builder.Services.AddScoped<RotaUpdateHandler, RotaUpdateHandler>();
+builder.Services.AddScoped<RotaDeleteHandler, RotaDeleteHandler>();
 //DI - Injecao de Dependencias
 
 builder.Services.AddEndpointsApiExplorer();
