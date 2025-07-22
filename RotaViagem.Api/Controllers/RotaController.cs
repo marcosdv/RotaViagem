@@ -20,28 +20,6 @@ public class RotaController : ControllerBase
         _rotaDeleteHandler = rotaDeleteHandler;
     }
 
-    [HttpPost("cargaInicial")]
-    public async Task<IActionResult> CargaInicialAsync()
-    {
-        var rota01 = new RotaCreateCommand { Origem = "GRU", Destino = "BRC", Preco = 10 };
-        var rota02 = new RotaCreateCommand { Origem = "BRC", Destino = "SCL", Preco = 5 };
-        var rota03 = new RotaCreateCommand { Origem = "GRU", Destino = "CDG", Preco = 75 };
-        var rota04 = new RotaCreateCommand { Origem = "GRU", Destino = "SCL", Preco = 20 };
-        var rota05 = new RotaCreateCommand { Origem = "GRU", Destino = "ORL", Preco = 56 };
-        var rota06 = new RotaCreateCommand { Origem = "ORL", Destino = "CDG", Preco = 5 };
-        var rota07 = new RotaCreateCommand { Origem = "SCL", Destino = "ORL", Preco = 20 };
-
-        await _rotaCreateHandler.Execute(rota01);
-        await _rotaCreateHandler.Execute(rota02);
-        await _rotaCreateHandler.Execute(rota03);
-        await _rotaCreateHandler.Execute(rota04);
-        await _rotaCreateHandler.Execute(rota05);
-        await _rotaCreateHandler.Execute(rota06);
-        await _rotaCreateHandler.Execute(rota07);
-
-        return Ok();
-    }
-
     [HttpPost]
     public async Task<IActionResult> CreateAsync(RotaCreateCommand command)
     {
@@ -67,4 +45,28 @@ public class RotaController : ControllerBase
     {
         return result.Sucesso ? Ok(result) : BadRequest(result);
     }
+
+    /*
+    [HttpPost("cargaInicial")]
+    public async Task<IActionResult> CargaInicialAsync()
+    {
+        var rota01 = new RotaCreateCommand { Origem = "GRU", Destino = "BRC", Preco = 10 };
+        var rota02 = new RotaCreateCommand { Origem = "BRC", Destino = "SCL", Preco = 5 };
+        var rota03 = new RotaCreateCommand { Origem = "GRU", Destino = "CDG", Preco = 75 };
+        var rota04 = new RotaCreateCommand { Origem = "GRU", Destino = "SCL", Preco = 20 };
+        var rota05 = new RotaCreateCommand { Origem = "GRU", Destino = "ORL", Preco = 56 };
+        var rota06 = new RotaCreateCommand { Origem = "ORL", Destino = "CDG", Preco = 5 };
+        var rota07 = new RotaCreateCommand { Origem = "SCL", Destino = "ORL", Preco = 20 };
+
+        await _rotaCreateHandler.Execute(rota01);
+        await _rotaCreateHandler.Execute(rota02);
+        await _rotaCreateHandler.Execute(rota03);
+        await _rotaCreateHandler.Execute(rota04);
+        await _rotaCreateHandler.Execute(rota05);
+        await _rotaCreateHandler.Execute(rota06);
+        await _rotaCreateHandler.Execute(rota07);
+
+        return Ok();
+    }
+    */
 }
