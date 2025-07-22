@@ -14,19 +14,37 @@ public class RotaController : ControllerBase
     private readonly RotaUpdateHandler _rotaUpdateHandler;
     private readonly RotaDeleteHandler _rotaDeleteHandler;
     private readonly RotaGetAllHandler _rotaGetAllHandler;
+    private readonly RotaGetByIdHandler _rotaGetByIdHandler;
 
-    public RotaController(RotaCreateHandler rotaCreateHandler, RotaUpdateHandler rotaUpdateHandler, RotaDeleteHandler rotaDeleteHandler, RotaGetAllHandler rotaGetAllHandler)
+    public RotaController(RotaCreateHandler rotaCreateHandler, RotaUpdateHandler rotaUpdateHandler, RotaDeleteHandler rotaDeleteHandler, RotaGetAllHandler rotaGetAllHandler, RotaGetByIdHandler rotaGetByIdHandler)
     {
         _rotaCreateHandler = rotaCreateHandler;
         _rotaUpdateHandler = rotaUpdateHandler;
         _rotaDeleteHandler = rotaDeleteHandler;
         _rotaGetAllHandler = rotaGetAllHandler;
+        _rotaGetByIdHandler = rotaGetByIdHandler;
     }
 
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
         var result = await _rotaGetAllHandler.Execute(new RotaGetAllQuery());
+        return CreateResult(result);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetByIdAsync(Guid id)
+    {
+        var query = new RotaGetByIdQuery { Id = id };
+        var result = await _rotaGetByIdHandler.Execute(query);
+        return CreateResult(result);
+    }
+
+    [HttpGet("melhor-rota/{origem}/{destino}")]
+    public async Task<IActionResult> GetMelhorRotaAsync(string origem, string destino)
+    {
+        var query = new RotaGetByIdQuery { Id = id };
+        var result = await _rotaGetByIdHandler.Execute(query);
         return CreateResult(result);
     }
 
