@@ -13,8 +13,7 @@ public class RotaMap : IEntityTypeConfiguration<Rota>
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Id)
-            .HasColumnName("RotId")
-            .UseIdentityColumn();
+            .HasColumnName("RotId");
 
         builder.Property(x => x.Origem)
             .HasColumnName("RotOrigem")
