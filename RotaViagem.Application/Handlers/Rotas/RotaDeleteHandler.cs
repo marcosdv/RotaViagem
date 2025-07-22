@@ -5,7 +5,7 @@ using RotaViagem.Domain.Repositories;
 
 namespace RotaViagem.Application.Handlers.Rotas;
 
-public class RotaDeleteHandler
+public class RotaDeleteHandler : IHandler<RotaDeleteCommand>
 {
     private readonly IRotaRepository _rotaRepository;
 
